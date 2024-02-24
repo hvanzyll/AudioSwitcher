@@ -105,12 +105,12 @@ namespace AudioSwitcher.AudioApi.CoreAudio
 			ComThread.Assert();
 
 			Exception ex;
+			object result = null;
 			//Need to catch here, as there is a chance that unauthorized is thrown.
 			//It's not an HR exception, but bubbles up through the .net call stack
 			try
 			{
 				var clsGuid = new Guid(ComInterfaceIds.AUDIO_METER_INFORMATION_IID);
-                object result;
 
 				ex = Marshal.GetExceptionForHR(Device.Activate(ref clsGuid, ClassContext.Inproc, IntPtr.Zero, out result));
 				if (result != null)
@@ -126,7 +126,7 @@ namespace AudioSwitcher.AudioApi.CoreAudio
 				ex = e;
 			}
 
-            if (ex != null)
+			if (result == null || ex != null)
 				ClearAudioMeterInformation();
 		}
 
