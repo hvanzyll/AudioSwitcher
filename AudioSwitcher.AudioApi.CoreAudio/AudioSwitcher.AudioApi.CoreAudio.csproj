@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard2.0;net60</TargetFrameworks>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
@@ -16,7 +16,11 @@
     <Copyright>Sean Chapman</Copyright>
     <PackageLicenseUrl>https://github.com/xenolightning/AudioSwitcher/blob/master/README.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/xenolightning/AudioSwitcher</PackageProjectUrl>
-    <Description>AudioSwitcher Core Audio Api.&#xD;&#xA;&#xD;&#xA;This includes all controllers and devices to access Windows System Devices and manipulate them.&#xD;&#xA;&#xD;&#xA;This library can be used on any PC running Windows Vista and above. Supports both x86/x64 runtimes.</Description>
+    <Description>AudioSwitcher Core Audio Api.
+
+This includes all controllers and devices to access Windows System Devices and manipulate them.
+
+This library can be used on any PC running Windows Vista and above. Supports both x86/x64 runtimes.</Description>
     <PackageTags>wasapi;audioswitcher;audio api;volume;sound</PackageTags>
     <PackageReleaseNotes>(Please write the package release notes in "RELEASE NOTES.txt".)</PackageReleaseNotes>
   </PropertyGroup>
@@ -40,6 +44,16 @@
     <WarningLevel>4</WarningLevel>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE;$(DefineConstants)</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
@@ -47,7 +61,40 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AssemblyOriginatorKeyFile>api.pfx</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>DEBUG;$(DefineConstants)</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyOriginatorKeyFile>api.pfx</AssemblyOriginatorKeyFile>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net60|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net60|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
